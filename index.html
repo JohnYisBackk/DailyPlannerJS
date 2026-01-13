@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calendar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <div class="nav-buttons">
+            <button class="nav-btn" id="prev-month">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn" id="next-month">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="month-year" id="month-year">September 2025</div>
+        </div>
+
+        <div class="weekdays">
+          <div class="weekday">Sun</div>
+          <div class="weekday">Mon</div>
+          <div class="weekday">Tue</div>
+          <div class="weekday">Wed</div>
+          <div class="weekday">Thu</div>
+          <div class="weekday">Fri</div>
+          <div class="weekday">Sat</div>
+        </div>
+
+        <div class="days" id="days"></div>
+
+        <div class="calendar-footer" id="calendar-footer">
+          <div class="footer-left" id="footer-left">📌 0 events today</div>
+          <div class="footer-right">
+            <div class="progress-container">
+              <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="progress-text" id="progress-text">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Panel -->
+      <div class="event-panel" id="event-panel">
+        <div class="event-header">
+          <div class="event-date" id="event-date">Select a date</div>
+          <i class="fas fa-moon" id="dark-mode-toggle"></i>
+        </div>
+
+        <div class="event-list" id="event-list">
+          <div class="no-events">
+            Select a date with events to view them here
+          </div>
+        </div>
+
+        <div class="event-actions">
+          <input type="time" id="event-time" />
+
+          <div class="text-input-wrapper">
+            <input type="text" id="event-text" placeholder="Event name" />
+            <button type="button" id="emoji-btn">😀</button>
+          </div>
+
+          <select id="event-priority">
+            <option value="low" class="priority-low">● Low Priority</option>
+            <option value="medium" class="priority-medium">
+              ● Medium Priority
+            </option>
+            <option value="high" class="priority-high">● High Priority</option>
+          </select>
+
+          <div class="event-buttons">
+            <button id="add-event">Add Event</button>
+            <button id="delete-event">Delete Event</button>
+          </div>
+
+          <div class="emoji-picker" id="emoji-picker">
+            <span>😀</span>
+            <span>😂</span>
+            <span>😎</span>
+            <span>🥳</span>
+            <span>❤️</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
