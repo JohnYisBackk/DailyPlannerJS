@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const progressBar = document.getElementById("progress-bar");
   const progressText = document.getElementById("progress-text");
 
+  // ---------------- Variables ----------------
   let currentDate = new Date();
   let selectedDate = null;
   let editingEventIndex = null;
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "The harder you work for something, the greater you’ll feel when you achieve it.",
   ];
 
+  // Create quote element
   const quoteEl = document.createElement("div");
   quoteEl.id = "motivational-quote";
   quoteEl.style.fontStyle = "italic";
@@ -53,12 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
   quoteEl.style.color = "var(--secondary)";
   document.getElementById("event-panel").prepend(quoteEl);
 
+  // ---------------- Date Formatting ----------------
   function formatDateKey(year, month, day) {
     const mm = String(month).padStart(2, "0");
     const dd = String(day).padStart(2, "0");
     return `${year}-${mm}-${dd}`;
   }
 
+  // ---------------- Get Quote for Date ----------------
   function getQuoteForDate(date) {
     if (!date) return "Select a date to see your motivation ✨";
     const dateStr = formatDateKey(
@@ -78,12 +82,14 @@ document.addEventListener("DOMContentLoaded", function () {
     quoteEl.textContent = getQuoteForDate(selectedDate);
   }
 
+  // ---------------- Update Buttons State ----------------
   function updateButtons() {
     const disabled = !selectedDate;
     addEventBtn.disabled = disabled;
     deleteEventBtn.disabled = disabled;
   }
 
+  // ---------------- Event Management ----------------
   function sortEventsByTime(dateKey) {
     if (!events[dateKey]) return;
     events[dateKey].sort((a, b) => {
@@ -94,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // ---------------- Footer Update ----------------
   function updateFooter(dateStr) {
     if (!footerLeft || !progressBar || !progressText) return;
 
@@ -115,15 +122,11 @@ document.addEventListener("DOMContentLoaded", function () {
     progressBar.style.width = percent + "%";
     progressText.textContent = percent + "%";
 
-    // Win animácia pri 100%
     if (percent === 100 && total > 0) {
-      // jednoduchý efekt: blikajúci bar
       progressBar.classList.add("win-animation");
 
-      // voliteľne: text naskočí
       progressText.textContent = "All Done! 🎉";
 
-      // odstránime triedu po pár sekundách
       setTimeout(() => {
         progressBar.classList.remove("win-animation");
         progressText.textContent = "100%";
@@ -131,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // ---------------- Show Events for Selected Date ----------------
   function showEvents(dateStr) {
     eventListEl.innerHTML = "";
     if (events[dateStr]) {
@@ -186,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
       eventListEl.innerHTML = `<div class="no-events">No events scheduled for this day</div>`;
     }
 
+    // Update event date display
     const [year, month, day] = dateStr.split("-").map(Number);
     const months = [
       "January",
@@ -201,6 +206,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "November",
       "December",
     ];
+
+    // Get day name
     const dayNames = [
       "Sunday",
       "Monday",
@@ -217,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateFooter(dateStr);
   }
 
+  // ---------------- Render Calendar ----------------
   function renderCalendar() {
     const firstDay = new Date(
       currentDate.getFullYear(),
@@ -308,6 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     daysEl.innerHTML = daysHTML;
 
+    // ---------------- Day Click / Drag-and-Drop ----------------
     document.querySelectorAll(".day:not(.other-month)").forEach((dayEl) => {
       const dateStr = dayEl.dataset.date;
       dayEl.addEventListener("click", () => {
@@ -477,3 +486,4 @@ document.addEventListener("DOMContentLoaded", function () {
   renderCalendar();
   updateButtons();
 });
+
