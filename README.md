@@ -18,7 +18,7 @@ A modern, interactive web calendar built with JavaScript. Designed to help you m
 - JavaScript (ES6)
 
 ## Credits
-This project was inspired by a YouTube tutorial: https://www.youtube.com/watch?v=nEf6VJvofjc
+This project was inspired by a YouTube tutorial: https://www.youtube.com/watch?v=gY7TzDW60RQ&t=8s
 All additional features and improvements were implemented by JohnYboY.
 
 ## License
